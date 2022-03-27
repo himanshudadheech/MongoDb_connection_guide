@@ -12,6 +12,7 @@ dotenv.config();
  
 
 //import connect
+// use path to configdb file inside config folder
 const connectDb = require("./config/configdb");
 //connecting to mongodb database
 connectDb();
