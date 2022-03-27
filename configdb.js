@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 // anonyms function
 
 /* 
@@ -9,17 +8,18 @@ while directly connecting we get error so we use
     useCreateIndex: true,
   }
 */
+const mongoose = require("mongoose");
+
 const connectDb = async () => {
   try {
-    const con = await mongoose.connect(process.env.MONGO_URI, {
-      useUnifiedTopology: true,
-      useNewUriParser: true,
-      useCreateIndex: true,
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        // useCreateIndex: true,
+        useUnifiedTopology: true
     });
-    console.log(`MongoDb Connected ${con.connection.host}`);
+    console.log(`Mongodb Connected ${conn.connection.host}`);
   } catch (error) {
-    console.error(`Error : ${(error, message)}`);
-    // if connection not establish or fail then exit 
+    console.error(`Error : ${error.message}`);
     process.exit(1);
   }
 };
